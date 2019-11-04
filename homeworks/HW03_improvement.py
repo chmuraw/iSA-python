@@ -121,6 +121,32 @@ def wiek_psa():
         wiek_psa = 21 + (lata - 2) * 4
     print("Pies ma {0} lat w psich latach".format(wiek_psa))
 
+# # ======================================================================
+# Zadanie 10
+# Lista temeratur wg godzin
+
+def odczyt_temp():
+# Ponizszy ciag danych podzielic co 4 znaki i przypisac kolejnym godzinom
+    dane = "215021482120211921002076207620502065202020152010200520002001199319901950183417501744186019462010"
+
+    for godzina in range(0, 24):
+        poczatek_zakresu = godzina * 4
+        koniec_zakresu = poczatek_zakresu + 4
+        temp = int(dane[poczatek_zakresu:koniec_zakresu]) / 100
+        if temp <= 20:
+            tab = "\t!"
+        elif temp <= 18.5:
+            tab = "\t!!"
+        else:
+            tab = ""
+
+        wiersz_string = f"{godzina}:00:\t {temp}\u00b0C{tab}"
+        # pod u00b0 to w unicode znaczek stopni
+        print(wiersz_string)
+
+    ## w domu trzeba jeszcze dac po dwa znaki przy godzinie i po dwa znaki po przecinku dla temperatur
+
+
 wybor = True
 while wybor:
     print("""
@@ -131,7 +157,8 @@ while wybor:
     5. Sprawdzenie czy rok jest przestepny.
     8. Narysowanie piramidy o zadanej wysokosi.
     9. Kalkulator psich lat. 
-    10. Wyjscie.
+    10. Odczyt tempreatur wg godziny.
+    11. Wyjscie.
     """)
     wybor = raw_input("Ktory program chcesz uruchomic? ")
     if wybor == "1":
@@ -149,6 +176,8 @@ while wybor:
     elif wybor == "9":
         wiek_psa()
     elif wybor == "10":
+        odczyt_temp()
+    elif wybor == "11":
         print("Do widzenia")
     else:
         print("Prosze wybrac inny wariant.")
