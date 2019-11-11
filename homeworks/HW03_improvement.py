@@ -24,7 +24,7 @@ def konwersja_temperatury():
     else:
         print("C = (F - 32) * 5/9")
 # Podanie ostatecznego wyniku konwersji
-    print(temperatura, "stopni", skala, "to", round(b, 2), "stopni", a)
+    print(temperatura, "stopni", skala.upper(), "to", round(b, 2), "stopni", a)
 
 # ======================================================================
 
@@ -84,26 +84,18 @@ def rok_przestepny():
 # # ======================================================================
 
 # # Zadanie 8. Program rysujący piramidę o określonej wysokości
-# # chyba zadziala w python3
-# def rysuj_piramide():
-#     def piramida(wysokosc):
-#           for i in range (0, wysokosc):
-#             for j in range(0, wysokosc - i):
-#                 print(end = ' ')
-#             for j in range(0, (i * 2)-1):
-#                 print("#", end = " ")
-#             print()
-#     wysokosc = int(input("Prosze podac wysokosc piramidy: "))
-#     piramida(wysokosc)
 
-# # Poprzednia wersja
-# wysokosc = int(input("Prosze podac wysokosc piramidy: "))
-# for i in range (0, wysokosc):
-#     for j in range(0, wysokosc - i):
-#         print(end=" ")
-#     for j in range(0, (i * 2)-1):
-#         print("#", end=" ")
-#     print()
+def rysuj_piramide():
+#
+    def piramida(wysokosc):
+          for i in range (0, wysokosc):
+            for j in range(0, wysokosc - i - 1):
+                print(end = " ")
+            for j in range(0, (i + 1)):
+                print("#", end = " ")
+            print()
+    wysokosc = int(input("Prosze podac wysokosc piramidy: "))
+    piramida(wysokosc)
 
 # # ======================================================================
 
@@ -133,14 +125,19 @@ def odczyt_temp():
         poczatek_zakresu = godzina * 4
         koniec_zakresu = poczatek_zakresu + 4
         temp = int(dane[poczatek_zakresu:koniec_zakresu]) / 100
-        if temp <= 20:
-            tab = "\t!"
-        elif temp <= 18.5:
+        temp_float = "%0.2f" % temp   # dla urody - wyswietli temp. do dwoch miejsc po przecinku
+
+        if temp <= 18.5:
             tab = "\t!!"
+        elif temp <= 20:
+            tab = "\t!"
         else:
             tab = ""
-
-        wiersz_string = f"{godzina}:00:\t {temp}\u00b0C{tab}"
+        if godzina < 10:
+            godzina_edycja = f"0{godzina}"
+        else:
+            godzina_edycja = godzina
+        wiersz_string = f"{godzina_edycja}:00:\t {temp_float}\u00b0C{tab}"
         # pod u00b0 to w unicode znaczek stopni
         print(wiersz_string)
 
@@ -160,7 +157,7 @@ while wybor:
     10. Odczyt tempreatur wg godziny.
     11. Wyjscie.
     """)
-    wybor = raw_input("Ktory program chcesz uruchomic? ")
+    wybor = input("Ktory program chcesz uruchomic? ")
     if wybor == "1":
         konwersja_temperatury()
     elif wybor == "2":
@@ -171,8 +168,8 @@ while wybor:
         binarna_dziesietna()
     elif wybor == "5":
         rok_przestepny()
-    #elif wybor == "8":
-        #rysuj_piramide()
+    elif wybor == "8":
+        rysuj_piramide()
     elif wybor == "9":
         wiek_psa()
     elif wybor == "10":
