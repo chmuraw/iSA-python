@@ -1,0 +1,8 @@
+Number of openings: 8
+Number of lines: 9 
+Number of words: 553 
+Number of characters: 3695 
+Number of letters a: 250 
+Number of letters z: 0 
+Number of spaces: 548 
+Number of word et: 54
