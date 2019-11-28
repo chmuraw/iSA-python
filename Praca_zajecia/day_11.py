@@ -178,3 +178,6 @@ with open('book.pkl', 'wb+') as book_file: # lista to typ binarny, więc musimy 
     print(counter)
     # 8
     print("Dzięki")
+
+
+

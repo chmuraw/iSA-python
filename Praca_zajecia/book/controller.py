@@ -17,8 +17,11 @@ if opcja == "1":
     rozmiar = len(ksiega)
     View.pokaz_rozmiar(rozmiar)
 
+# kontroler ma pobiera wpisy i wyswietla je (w dowolnej formie) -- do dokonczenia w domu!!!!
 elif opcja == "2":
-    pass
-    # kontroler pobiera wpisy i wyswietla je w dowolnej formie
+    ksiega = Ksiega()
+    print(ksiega.wpisy)
+
+
 else:
     View.blad()
