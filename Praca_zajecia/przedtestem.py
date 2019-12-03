@@ -176,3 +176,12 @@
 # B().f() # wyswietli B (bo napisalismy)
 # C().f() # wyswietli C
 # D().f() # wyswietli A
+
+
+#zakres widocznosci zmiennych (scope zmiennych)
+# zmienna = "dom" - zmienna jest bez zadnych tabulatorow, wiec jest globalna
+# def funkcja():
+#     zmienna = "Praca"
+# print(zmienna)
+
+#nawet jesli w funkcji deklarowana jest zmienna o tej zamej nazwie co gllobalna, to na koniec jak sie wywola to wyswietli sie ta globalna zmienna.
