@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block tytul %}
+            Nasza ksiega gosci
+        {% endblock %}
+    </title>
+    <style>
+        h2 {
+            color: red;
+            font-size: 28px;
+            text-decoration: underline;
+            border: 1px dotted red;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h2>Moja ksiega gosci</h2>
+    </center>
+
+    <a href="/">Strona glowna</a>
+    <br/>
+    <a href="/dodaj_wpis">Chce dodac wpis</a>
+    <br/>
+    <a href="/lista_wpisow">Pokaz liste wpisow</a>
+
+    {% block zawartosc_strony %}
+    <p> Witaj w mojej ksiedze gosci</p>
+    {% endblock %}
+
+</body>
+</html>

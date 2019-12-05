@@ -1,0 +1,18 @@
+{% extends "index.html" %}
+
+{% block tytul %}
+    Nasza ksiega gosci - WPISY
+{% endblock %}
+
+{% block zawartosc_strony %}
+    <h1> Dodaj wpis </h1>
+
+    <form method="post">
+        Autor:<input type = "text" name = "autor"/><br/>
+        Tytul:<input type = "text" name = "tytul"/><br/>
+        Tresc:<input type = "text" name = "tresc"/><br/>
+        Data:<input type = "date" name = "data"/><br/><br/>
+        <input type="submit" value="Zapisz">
+    </form>
+{% endblock %}
+

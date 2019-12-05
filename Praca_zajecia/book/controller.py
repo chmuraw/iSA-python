@@ -25,3 +25,4 @@ elif opcja == "2":
 
 else:
     View.blad()
+r
