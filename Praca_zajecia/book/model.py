@@ -5,6 +5,7 @@ from datetime import datetime
 class Ksiega():
     # najpierw definiuje konstruktor. potem, jesli cos nowego pojawi sie w metodzie, to tez tu musze dodac
     def __init__(self):
+        self.wpis = None
         self.nazwa = "Ksiega gosci"
         self.plik = "book.pkl"
         self.wpisy = []

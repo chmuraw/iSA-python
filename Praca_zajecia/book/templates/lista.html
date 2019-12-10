@@ -2,15 +2,32 @@
 
 {% block zawartosc_strony %}
     <h1> Lista wpisow w ksiedze </h1>
+    <pr> Na liscie jest {{ ilosc_wpisow}} wpisow  </pr>
+
+    <table BORDER=5 BORDERCOLOR=red>
+        <tr>
+            <th>Autor</th>
+            <th>Tytul</th>
+            <th>Tresc</th>
+            <th>Data</th>
+        </tr>
+
+        {% for wpis in wpisy_html %}
+        <tr>
+            <td> {{ wpis.autor }} </td>
+            <td> {{ wpis.tytul }} </td>
+            <td> {{ wpis.tresc }} </td>
+             <td> {{ wpis.data }} </td>
+        </tr>
+
+        {% endfor %}
+
+     </table>
 {% endblock %}
 
-{% for wpis in wpisy %}
-{{ wpis.autor}}
 
-## komentarz oznacza sie inaczej --- sprawdz jak
-## do wyswietlania w jinju uzywam dwa nawiasy klamrowe (jak print w html)
-
+  <!-- do wyswietlania w jinju uzywam dwa nawiasy klamrowe (jak print w html)-->
 
 {% block tytul %}
-    Nasza ksiega gosci - WPISY
+    Nasza ksiega gosci / WPISY
 {% endblock %}

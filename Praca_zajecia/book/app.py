@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-from flask import request
+from flask import request, redirect, url_for  # mozna po przecinku dodawac kolejne klasy importowane z tegoo modulu
 from model import Wpis
 from model import Ksiega
 
@@ -24,21 +24,25 @@ def hi(imie):
 
 @app.route("/dodaj_wpis", methods = ["GET", "POST"])
 def dodaj_wpis():
-    return render_template("dodaj.html")
-    autor = request.form["autor"]
-    tytul = request.form["tytul"]
-    tresc = request.form["tresc"]
+    if request.method == 'POST':
+        autor = request.form['autor']
+        tresc = request.form['tresc']
+        tytul = request.form['tytul']
 
-    ksiega = Ksiega()
-    wpis = Wpis(autor, tytul, tresc)
-    ksiega.dodaj_wpis(wpis)
-    rozmiar = len(ksiega)
-    View.pokaz_rozmiar(rozmiar)
+        ksiega = Ksiega()
+        wpis = Wpis(autor, tytul, tresc)
+        ksiega.dodaj_wpis(wpis)
+        ilosc_wpisow = len(ksiega)
+        print(len(ksiega))
 
+    # return redirect(url_for("lista_wpisow")) ## to po dodaniu wpisu przeniesie uzytkownika na podana strone insternetowa
+
+    return render_template('dodaj.html')
 @app.route("/lista_wpisow")
 def lista_wpisow():
-    return render_template("lista.html")
+    ksiega = Ksiega()
+    wpisy = ksiega.wpisy[::-1]
+    return render_template("lista.html", wpisy_html = wpisy)
 
-### ZAdanie domowe - zrobic wyswietlanie listy :D :D :D
-## mozna dorobic wyszukiewarke wpisow
 
+app.run(debug=True)   # to za kazdym razem wpisywalam w terminalu, zeby strona na biezaco sie odswiezala. teraz juz nei trzeba
